@@ -1,5 +1,6 @@
 import SpeculosTransport from "@ledgerhq/hw-transport-node-speculos";
 import AppLat from "@ledgerhq/hw-app-eth";
+// import AppLat from "@ledgerhq/hw-app-lat";
 
 function getLat() : Promise<AppLat> {
     const apduPort = 9998;
@@ -24,4 +25,15 @@ const signLatPersonalMessage = async (path: string, messageHex: string) => {
     return result;
 };
 
-export {getLatAddress, signLatTransaction, signLatPersonalMessage};
+const getLatAppConfiguration = async () => {
+    const lat =  await getLat();
+    const result = await lat.getAppConfiguration()
+    return result;
+};
+
+export {
+    getLatAddress, 
+    signLatTransaction, 
+    signLatPersonalMessage,
+    getLatAppConfiguration,
+};
