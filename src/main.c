@@ -144,17 +144,11 @@ tokenDefinition_t *getKnownToken(uint8_t *contractAddress) {
         case CHAIN_KIND_PLATON:
             numTokens = NUM_TOKENS_PLATON;
             break;
-        case CHAIN_KIND_PLATON_CLASSIC:
-            numTokens = NUM_TOKENS_PLATON_CLASSIC;
-            break;
     }
     for (i = 0; i < numTokens; i++) {
         switch (chainConfig->kind) {
             case CHAIN_KIND_PLATON:
                 currentToken = (tokenDefinition_t *) PIC(&TOKENS_PLATON[i]);
-                break;
-            case CHAIN_KIND_PLATON_CLASSIC:
-                currentToken = (tokenDefinition_t *) PIC(&TOKENS_PLATON_CLASSIC[i]);
                 break;
         }
         if (memcmp(currentToken->address, tmpContent.txContent.destination, ADDRESS_LENGTH) == 0) {
