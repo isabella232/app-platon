@@ -50,6 +50,10 @@ endif
 APP_LOAD_PARAMS += $(APP_LOAD_FLAGS) --path "44'/1'"
 DEFINES += $(DEFINES_LIB)
 
+# Ledger: add the "Pending security review" disclaimer
+APP_LOAD_PARAMS += --tlvraw 9F:01
+DEFINES += HAVE_PENDING_REVIEW_SCREEN
+
 #prepare hsm generation
 ifeq ($(TARGET_NAME), TARGET_NANOX)
 ICONNAME=icons/nanox_app_$(CHAIN).gif
