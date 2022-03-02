@@ -469,10 +469,10 @@ void coin_main(chain_config_t *coin_config) {
             TRY {
                 io_seproxyhal_init();
 
-#ifdef TARGET_NANOX
+#ifdef HAVE_BLE
                 // grab the current plane mode setting
                 G_io_app.plane_mode = os_setting_get(OS_SETTING_PLANEMODE, NULL, 0);
-#endif  // TARGET_NANOX
+#endif  // HAVE_BLE
 
                 if (N_storage.initialized != 0x01) {
                     internalStorage_t storage;
